@@ -72,7 +72,7 @@ public class Tag {
         Tag tag = new Tag(nome);
         
         if(organizer.size() != 0 && !getUltimaTag().getTags().isEmpty() && getUltimaTag().getTags().get(getUltimaTag().getTags().size()-1).getNome().equals(nome)) {
-            //organizer.get(organizer.size()-1).setTipo("Array"); //ERRADO!!!
+            getUltimaTag().getTags().get(getUltimaTag().getTags().size()-1).setTipo("Array");
             tag.setTipo("Array");
         }
         if(!stack.empty() && stack.peek().getTipo().equals("Node"))
