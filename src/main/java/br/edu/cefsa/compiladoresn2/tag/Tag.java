@@ -86,10 +86,10 @@ public class Tag {
     }
     
     private static String checaStatus(String palavra){
-        if(palavra.startsWith("<") && palavra.endsWith(">"))
-            return "INICIO";
         if(palavra.startsWith("</") && palavra.endsWith(">"))
             return "FIM";
+        if(palavra.startsWith("<") && palavra.endsWith(">"))
+            return "INICIO";
 
         return "VALOR";
     }
