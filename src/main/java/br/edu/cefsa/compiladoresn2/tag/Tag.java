@@ -19,6 +19,7 @@ public class Tag {
     private String valor;
     private List<Tag> tags = new ArrayList<Tag>();
     public static List<Tag> organizer = new ArrayList<Tag>();
+    private static Tag ultimaTagFechada;
 
     public Tag() {
     }
@@ -71,11 +72,12 @@ public class Tag {
     private static void adicionaStack(Stack<Tag> stack, String nome){
         Tag tag = new Tag(nome);
         
-        if(organizer.size() != 0 && !getUltimaTag().getTags().isEmpty() && getUltimaTag().getTags().get(getUltimaTag().getTags().size()-1).getNome().equals(nome)) {
-            getUltimaTag().getTags().get(getUltimaTag().getTags().size()-1).setTipo("Array");
+        if(!organizer.isEmpty() && ultimaTagFechada != null && ultimaTagFechada.getNome().equals(nome)) {
+            if(ultimaTagFechada.getTipo().equals("Node"))
+                ultimaTagFechada.setTipo("ArrayInicio");
             tag.setTipo("Array");
         }
-        if(!stack.empty() && stack.peek().getTipo().equals("Node"))
+        if(!stack.empty() && !stack.peek().getTipo().equals("Valor"))
             stack.peek().setTags(tag);
 
         stack.add(tag);
@@ -85,7 +87,7 @@ public class Tag {
         if(!nome.equals(stack.peek().getNome()))
             System.out.println("Erro"); //TODO throws Exception
         
-        stack.pop();
+        ultimaTagFechada = stack.pop();
     }
     
     private static void alteraTipo(Stack<Tag> stack, String valor){
@@ -106,7 +108,8 @@ public class Tag {
         return palavra.replace("</", "").replace(">", "").replace("<", "");
     }
     
-    private static Tag getUltimaTag() {
-        return organizer.get(organizer.size()-1);
+    private static boolean isEqualToUltimaTagName(String nome) {
+        organizer.get(organizer.size()-1);
+        return true;
     }
 }
