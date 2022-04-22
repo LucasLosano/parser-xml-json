@@ -1,6 +1,6 @@
 <CATALOG>
 	<CD>
-		<TITLE>Empire Burlesque</TITLE>
+		<TITLE><ARTIST>Bob Dylan</ARTIST><ARTIST>Empire Burlesque</ARTIST></TITLE>
 		<ARTIST>Bob Dylan</ARTIST>
 		<COUNTRY>USA</COUNTRY>
 		<COMPANY>Columbia</COMPANY>

@@ -50,9 +50,9 @@ public class CompiladoresN2 {
             
         }
         
-        if (!pilhaMaiorMenor.empty())
+        if (!pilhaMaiorMenor.empty() && !pilhaTag.empty())
             return false;
-        System.out.println("aaaa");
+
         return true;
  
     }
