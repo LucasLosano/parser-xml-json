@@ -7,6 +7,7 @@ package br.edu.cefsa.compiladoresn2;
 
 import br.edu.cefsa.compiladoresn2.arquivo.ArquivoDAO;
 import br.edu.cefsa.compiladoresn2.tag.Tag;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -49,10 +50,10 @@ public class CompiladoresN2 {
             }
             
         }
-        
-        if (!pilhaMaiorMenor.empty())
+        List<Tag> bla = Tag.organizer;
+        if (!pilhaMaiorMenor.empty() && !pilhaTag.empty())
             return false;
-        System.out.println("aaaa");
+
         return true;
  
     }
