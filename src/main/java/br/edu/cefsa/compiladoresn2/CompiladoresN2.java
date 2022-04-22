@@ -17,7 +17,7 @@ public class CompiladoresN2 {
 
     public static void main(String[] args) {
         try{
-           String xml = ArquivoDAO.readTextFile("C:\\Users\\losan\\Desktop\\Documentos\\N1.txt");
+           String xml = ArquivoDAO.readTextFile("N1.txt");
            checaParenteses(xml);
         }
         catch(Exception e){
@@ -52,6 +52,8 @@ public class CompiladoresN2 {
         
         if (!pilhaMaiorMenor.empty())
             return false;
+        System.out.println("aaaa");
         return true;
+ 
     }
 }

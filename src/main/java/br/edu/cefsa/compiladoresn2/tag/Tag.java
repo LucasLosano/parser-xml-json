@@ -59,10 +59,10 @@ public class Tag {
         palavraAtual = limpaPalavra(palavraAtual); 
         if(status.equals("INICIO"))
             adicionaStack(stack, palavraAtual);
-        if(status.equals("FIM"))
-            removeStack(stack, palavraAtual);
         if(status.equals("VALOR"))
             alteraTipo(stack, palavraAtual);
+        if(status.equals("FIM"))
+            removeStack(stack, palavraAtual);
     }
     
     private static void adicionaStack(Stack<Tag> stack, String nome){
@@ -86,16 +86,15 @@ public class Tag {
     }
     
     private static String checaStatus(String palavra){
-        if(palavra.startsWith("</") && palavra.endsWith(">"))
-            return "FIM";
         if(palavra.startsWith("<") && palavra.endsWith(">"))
             return "INICIO";
-        
+        if(palavra.startsWith("</") && palavra.endsWith(">"))
+            return "FIM";
+
         return "VALOR";
     }
     
     private static String limpaPalavra(String palavra){
-        
         return palavra.replace("</", "").replace(">", "").replace("<", "");
     }
 }
