@@ -1,20 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
- */
-
 package br.edu.cefsa.compiladoresn2;
 
 import br.edu.cefsa.compiladoresn2.arquivo.ArquivoDAO;
 import br.edu.cefsa.compiladoresn2.tag.Tag;
-import java.util.List;
 import java.util.Stack;
-
-/**
- *
- * @author losan
- */
-
 
 public class CompiladoresN2 {
     
@@ -60,13 +48,13 @@ public static Tag tagOrganizer;
                     proxTag = allTags.get(next);
                 }
                 
-                if(tagObj.getTipo() == "Node") {
+                if("Node".equals(tagObj.getTipo())) {
                     stringToReturn.append("\n");
                     System.out.println("Node");
                     escreveNode(tagObj.getNome(), stringToReturn);
                 }
                 
-                if(tagObj.getTipo() == "ArrayInicio") {
+                if("ArrayInicio".equals(tagObj.getTipo())) {
                     stringToReturn.append("\n");
                     charPilha.add('{');
                     System.out.println("ArrayInicio");
@@ -74,13 +62,13 @@ public static Tag tagOrganizer;
                     stringToReturn.append("\n" + "{");
                 }
                 
-                if(tagObj.getTipo() == "Dado"){
+                if("Dado".equals(tagObj.getTipo())){
                     System.out.println("Dado");
                     stringToReturn.append("\n");
                     escreveDado(tagObj, stringToReturn);
                 }
                 
-                if(tagObj.getTipo() == "Array") {
+                if("Array".equals(tagObj.getTipo())) {
                    System.out.println("Array");
                    stringToReturn.append("\n" + "{" );
                }
@@ -111,7 +99,7 @@ public static Tag tagOrganizer;
             }
             
         }
-        return !(!pilhaMaiorMenor.empty() && !pilhaTag.empty());
+        return !pilhaMaiorMenor.empty() && !pilhaTag.empty();
  
     }
 }
