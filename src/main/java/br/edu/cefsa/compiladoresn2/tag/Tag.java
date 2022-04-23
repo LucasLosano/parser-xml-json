@@ -4,7 +4,6 @@
  */
 package br.edu.cefsa.compiladoresn2.tag;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -13,12 +12,15 @@ import java.util.Stack;
  *
  * @author losan
  */
-public class Tag {
 
+public class Tag {
+    private Tag nodePai;
     private String nome;
     private String tipo = "Node";
     private String valor;
-    public static ArrayDeque<Tag> organizer = new ArrayDeque<Tag>();
+    public static List<Tag> organizer = new ArrayList<Tag>();
+    private static Stack<Tag> parents = new Stack<Tag>();
+
     private static Tag ultimaTagFechada;
 
     public Tag() {
@@ -95,5 +97,17 @@ public class Tag {
     
     private static String limpaPalavra(String palavra){
         return palavra.replace("</", "").replace(">", "").replace("<", "");
+    }
+
+    public boolean contains(Integer integer) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Tag get(Integer integer) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Integer size() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
