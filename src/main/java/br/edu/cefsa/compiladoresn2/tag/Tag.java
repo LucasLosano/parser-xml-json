@@ -4,6 +4,7 @@
  */
 package br.edu.cefsa.compiladoresn2.tag;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -17,8 +18,7 @@ public class Tag {
     private String nome;
     private String tipo = "Node";
     private String valor;
-    private List<Tag> tags = new ArrayList<Tag>();
-    public static List<Tag> organizer = new ArrayList<Tag>();
+    public static ArrayDeque<Tag> organizer = new ArrayDeque<Tag>();
     private static Tag ultimaTagFechada;
 
     public Tag() {
@@ -47,26 +47,18 @@ public class Tag {
     public void setValor(String valor) {
         this.valor = valor;
     }
-
-    public List<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(Tag tag) {
-        this.tags.add(tag);
-    }
     
     public static void manipulaStack(Stack<Tag> stack, String palavraAtual){
         String status = checaStatus(palavraAtual);
         palavraAtual = limpaPalavra(palavraAtual); 
-        if(status.equals("INICIO")) 
+        if(status.equals("INICIO")){
             adicionaStack(stack, palavraAtual);
+            organizer.add(stack.peek());
+        }
         if(status.equals("VALOR"))
             alteraTipo(stack, palavraAtual);
         if(status.equals("FIM"))
             removeStack(stack, palavraAtual);
-        if(stack.size() == 1 && status.equals("INICIO"))
-            organizer.add(stack.peek());
     }
     
     private static void adicionaStack(Stack<Tag> stack, String nome){
@@ -77,9 +69,6 @@ public class Tag {
                 ultimaTagFechada.setTipo("ArrayInicio");
             tag.setTipo("Array");
         }
-        if(!stack.empty() && !stack.peek().getTipo().equals("Valor"))
-            stack.peek().setTags(tag);
-
         stack.add(tag);
     }
     
@@ -106,10 +95,5 @@ public class Tag {
     
     private static String limpaPalavra(String palavra){
         return palavra.replace("</", "").replace(">", "").replace("<", "");
-    }
-    
-    private static boolean isEqualToUltimaTagName(String nome) {
-        organizer.get(organizer.size()-1);
-        return true;
     }
 }
