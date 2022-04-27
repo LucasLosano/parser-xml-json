@@ -97,4 +97,5 @@ public class Tag {
     private static String limpaPalavra(String palavra){
         return palavra.replace("</", "").replace(">", "").replace("<", "");
     }
+
 }
