@@ -1,4 +1,3 @@
-<CATALOG1>
 <CATALOG>
 <CD>
 <TITLE>Empire Burlesque</TITLE>
@@ -209,4 +208,3 @@
 <YEAR>1987</YEAR>
 </CD>
 </CATALOG>
-</CATALOG1>
