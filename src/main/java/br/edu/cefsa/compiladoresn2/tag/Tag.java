@@ -1,24 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.edu.cefsa.compiladoresn2.tag;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-/**
- *
- * @author losan
- */
 public class Tag {
-
     private String nome;
     private String tipo = "Node";
     private String valor;
-    public static ArrayDeque<Tag> organizer = new ArrayDeque<Tag>();
+    private Tag pai;
+    public static List<Tag> organizer = new ArrayList<Tag>();
     private static Tag ultimaTagFechada;
 
     public Tag() {
@@ -48,6 +39,14 @@ public class Tag {
         this.valor = valor;
     }
     
+    public Tag getPai() {
+        return pai;
+    }
+
+    public void setPai(Tag pai) {
+        this.pai = pai;
+    }
+    
     public static void manipulaStack(Stack<Tag> stack, String palavraAtual){
         String status = checaStatus(palavraAtual);
         palavraAtual = limpaPalavra(palavraAtual); 
@@ -69,6 +68,8 @@ public class Tag {
                 ultimaTagFechada.setTipo("ArrayInicio");
             tag.setTipo("Array");
         }
+        if(!stack.empty() && !stack.peek().getTipo().equals("Valor"))
+            tag.setPai(stack.peek());
         stack.add(tag);
     }
     
@@ -96,4 +97,5 @@ public class Tag {
     private static String limpaPalavra(String palavra){
         return palavra.replace("</", "").replace(">", "").replace("<", "");
     }
+
 }
