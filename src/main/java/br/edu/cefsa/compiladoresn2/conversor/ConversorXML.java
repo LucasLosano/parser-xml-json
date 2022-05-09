@@ -1,18 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.edu.cefsa.compiladoresn2.conversor;
 
 import br.edu.cefsa.compiladoresn2.tag.Tag;
 
-/**
- *
- * @author Arthur
- */
 public class ConversorXML {
-    public static StringBuilder stringConverted;
-    public static Tag tagOrganizer;
      
     public static void escreveNode(String valor, StringBuilder stringFinal) {
         stringFinal.append(("\"" + valor + "\"" + ": {"));

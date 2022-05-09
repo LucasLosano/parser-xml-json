@@ -97,5 +97,31 @@ public class Tag {
     private static String limpaPalavra(String palavra){
         return palavra.replace("</", "").replace(">", "").replace("<", "");
     }
+    
+    public static boolean validaXML(String xml) {
+        Stack pilhaMaiorMenor = new Stack();
+        Stack<Tag> pilhaTag = new Stack<Tag>();
+        String palavraAtual = "";
+
+        for (Character aux : xml.toCharArray()) {
+            palavraAtual += aux;
+
+            if (aux == '<') {
+                if (!palavraAtual.equals(aux.toString())) {
+                    Tag.manipulaStack(pilhaTag, palavraAtual.replace("<", ""));
+                    palavraAtual = "<";
+                }
+                pilhaMaiorMenor.add(aux);
+                continue;
+            }
+            if (!pilhaMaiorMenor.empty() && aux == '>') {
+                pilhaMaiorMenor.pop();
+                Tag.manipulaStack(pilhaTag, palavraAtual);
+                palavraAtual = "";
+            }
+
+        }
+        return pilhaMaiorMenor.empty() && pilhaTag.empty();
+    }
 
 }
